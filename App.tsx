@@ -4,7 +4,7 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Xin chào thế giới!</Text>
+      <Text style={styles.text}>Xin chào thế giới!</Text>
       <Text>HeHe</Text>
       <TextInput style={{
           height: 40,
@@ -28,4 +28,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text: {
+    color: 'red',
+    fontSize: 20
+  }
 });
