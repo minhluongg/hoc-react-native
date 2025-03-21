@@ -1,6 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { Alert, Button, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Alert,
+  Button,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 export default function App() {
   const [name, setName] = useState<string>("Minh Luong");
@@ -42,12 +50,22 @@ export default function App() {
           onPress={() => Alert.alert("Simple Button pressed")}
         />
       </View>
-      {todoList &&
-        todoList.map((todo) => (
-          <View key={todo.id} style={styles.todo}>
-            <Text>{todo.title}</Text>
-          </View>
-        ))}
+      <ScrollView
+        style={{
+          borderColor: "pink",
+          borderWidth: 1,
+          padding: 16,
+          borderRadius: 5,
+          marginTop: 16,
+        }}
+      >
+        {todoList &&
+          todoList.map((todo) => (
+            <View key={todo.id} style={styles.todo}>
+              <Text>{todo.title}</Text>
+            </View>
+          ))}
+      </ScrollView>
       <StatusBar style="auto" />
     </View>
   );
