@@ -3,6 +3,7 @@ import { useState } from "react";
 import {
   Alert,
   Button,
+  FlatList,
   ScrollView,
   StyleSheet,
   Text,
@@ -11,6 +12,13 @@ import {
 } from "react-native";
 
 export default function App() {
+  type ItemProps = { title: string };
+  const Item = ({ title }: ItemProps) => (
+    <View style={styles.todo}>
+      <Text>{title}</Text>
+    </View>
+  );
+
   const [name, setName] = useState<string>("Minh Luong");
   const [todoList, setTodoList] = useState([
     { id: 1, title: "Todo 1" },
@@ -46,11 +54,23 @@ export default function App() {
       </View>
       <View>
         <Button
-          title="Add new"
+          title="Add neww"
           onPress={() => Alert.alert("Simple Button pressed")}
         />
       </View>
-      <ScrollView
+      <FlatList
+        style={{
+          borderColor: "pink",
+          borderWidth: 1,
+          padding: 16,
+          borderRadius: 5,
+          marginTop: 16,
+        }}
+        data={todoList}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => <Item title={item.title} />}
+      ></FlatList>
+      {/* <ScrollView
         style={{
           borderColor: "pink",
           borderWidth: 1,
@@ -65,7 +85,7 @@ export default function App() {
               <Text>{todo.title}</Text>
             </View>
           ))}
-      </ScrollView>
+      </ScrollView> */}
       <StatusBar style="auto" />
     </View>
   );
