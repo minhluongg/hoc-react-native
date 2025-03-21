@@ -1,26 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import {
-  Alert,
-  Button,
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { StyleSheet, View } from "react-native";
+import InputTodo from "./components/todo/Input.Todo";
+import ListTodo from "./components/todo/List.Todo";
 
 export default function App() {
-  type ItemProps = { title: string };
-  const Item = ({ title }: ItemProps) => (
-    <View style={styles.todo}>
-      <Text>{title}</Text>
-    </View>
-  );
-
-  const [name, setName] = useState<string>("Minh Luong");
-  const [todoList, setTodoList] = useState([
+  const [todoList, setTodoList] = useState<ITodo[]>([
     { id: 1, title: "Todo 1" },
     { id: 2, title: "Todo 2" },
     { id: 3, title: "Lorem abc" },
@@ -40,82 +25,20 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Xin chào thế giới!</Text>
-      <TextInput
-        style={styles.input}
-        // autoCapitalize="none"
-        autoCorrect={false}
-        placeholder="Enter your name"
-        onChangeText={(val) => setName(val)}
-        // defaultValue="You can type in me ds"
-      ></TextInput>
-      <View>
-        <Text>{name}</Text>
-      </View>
-      <View>
-        <Button
-          title="Add neww"
-          onPress={() => Alert.alert("Simple Button pressed")}
-        />
-      </View>
-      <FlatList
-        style={{
-          borderColor: "pink",
-          borderWidth: 1,
-          padding: 16,
-          borderRadius: 5,
-          marginTop: 16,
-        }}
-        data={todoList}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <Item title={item.title} />}
-      ></FlatList>
-      {/* <ScrollView
-        style={{
-          borderColor: "pink",
-          borderWidth: 1,
-          padding: 16,
-          borderRadius: 5,
-          marginTop: 16,
-        }}
-      >
-        {todoList &&
-          todoList.map((todo) => (
-            <View key={todo.id} style={styles.todo}>
-              <Text>{todo.title}</Text>
-            </View>
-          ))}
-      </ScrollView> */}
+      <InputTodo></InputTodo>
+      <ListTodo todoList={todoList} />
+
       <StatusBar style="auto" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  todo: {
-    padding: 16,
-    backgroundColor: "#f9f9f9",
-    borderRadius: 5,
-    marginBottom: 16,
-    fontSize: 16,
-  },
-  input: {
-    height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
-    width: "100%",
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 16,
-    marginTop: 16,
-  },
   container: {
     flex: 1,
     backgroundColor: "#fff",
     paddingTop: 50,
     paddingHorizontal: 16,
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   text: {
     color: "red",
