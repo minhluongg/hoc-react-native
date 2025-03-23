@@ -1,8 +1,20 @@
 import React, { useState } from "react";
 import { Alert, Button, StyleSheet, TextInput, View } from "react-native";
 
-const InputTodo = () => {
+interface IProps {
+  addTodo: (title: string) => void;
+}
+
+const InputTodo = (props: IProps) => {
   const [name, setName] = useState<string>("");
+
+  const { addTodo } = props;
+  const handleAddNewTodo = () => {
+    addTodo(name);
+    setName("");
+    Alert.alert("Todo added successfully");
+  };
+
   return (
     <View>
       <TextInput
@@ -12,10 +24,7 @@ const InputTodo = () => {
         placeholder="Enter new todo"
         onChangeText={(val) => setName(val)}
       ></TextInput>
-      <Button
-        title="Add new todo"
-        onPress={() => Alert.alert("Simple Button pressed")}
-      />
+      <Button title="Add new todo" onPress={handleAddNewTodo} />
     </View>
   );
 };
