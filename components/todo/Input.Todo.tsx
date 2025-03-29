@@ -1,14 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  Alert,
-  Button,
-  Keyboard,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Alert, Keyboard, StyleSheet, TextInput, View } from "react-native";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import MineButton from "../button/Mine.Button";
 
 interface IProps {
   addTodo: (title: string) => void;
@@ -56,9 +49,7 @@ const InputTodo = (props: IProps) => {
         placeholder="Enter new todo"
         onChangeText={(val) => setName(val)}
       ></TextInput>
-      <TouchableOpacity onPress={handleAddNewTodo}>
-        <Text style={styles.btnAdd}>Add new todo</Text>
-      </TouchableOpacity>
+      <MineButton title="Add new todo" onPress={handleAddNewTodo}></MineButton>
     </View>
   );
 };
@@ -66,17 +57,6 @@ const InputTodo = (props: IProps) => {
 export default InputTodo;
 
 const styles = StyleSheet.create({
-  btnAdd: {
-    backgroundColor: "#4f46e5",
-    color: "#fff",
-    padding: 16,
-    borderRadius: 8,
-    alignItems: "center",
-    marginBottom: 16,
-    display: "flex",
-    justifyContent: "center",
-    textAlign: "center",
-  },
   todoInput: {
     // height: 40,
     borderColor: "#d1d5db",
