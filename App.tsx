@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import InputTodo from "./components/todo/Input.Todo";
 import ListTodo from "./components/todo/List.Todo";
+import FlexBox from "./components/todo/FlexBox";
 
 export default function App() {
   const [todoList, setTodoList] = useState<ITodo[]>([]);
@@ -30,18 +31,21 @@ export default function App() {
   };
 
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        Keyboard.dismiss();
-      }}
-    >
-      <View style={styles.container}>
-        <InputTodo addTodo={addTodo}></InputTodo>
-        <ListTodo todoList={todoList} deleteTodo={deleteTodo} />
+    <View style={styles.container}>
+      <FlexBox></FlexBox>
+    </View>
+    // <TouchableWithoutFeedback
+    //   onPress={() => {
+    //     Keyboard.dismiss();
+    //   }}
+    // >
+    //   <View style={styles.container}>
+    //     <InputTodo addTodo={addTodo}></InputTodo>
+    //     <ListTodo todoList={todoList} deleteTodo={deleteTodo} />
 
-        <StatusBar style="auto" />
-      </View>
-    </TouchableWithoutFeedback>
+    //     <StatusBar style="auto" />
+    //   </View>
+    // </TouchableWithoutFeedback>
   );
 }
 

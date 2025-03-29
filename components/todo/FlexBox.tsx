@@ -1,8 +1,12 @@
 import React from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 
 const FlexBox = () => {
-  return <View></View>;
+  return (
+    <View>
+      <Text>Flex Box</Text>
+    </View>
+  );
 };
 
 export default FlexBox;
